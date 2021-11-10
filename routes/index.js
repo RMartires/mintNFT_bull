@@ -32,12 +32,14 @@ router.get('/mintNFT', async function (req, res) {
 
     nftQueue.add({ UUID: UUID, ipfsHash: ipfsHash });
 
+    res.setHeader("Access-Control-Allow-Origin", "*");
     res.status(200).json({
       UUID: UUID,
       msg: "done"
     });
   } catch (err) {
     console.log(err);
+    res.setHeader("Access-Control-Allow-Origin", "*");
     res.status(500).json({
       msg: 'error'
     })
